@@ -42,8 +42,8 @@ void dropFood() {
   int foodX, foodY;
   bool safeToDropFood = false;
   while ( !safeToDropFood ) {
-    foodX = random(19);
-    foodY = random(7);
+    foodX = random(20);
+    foodY = random(8);
 
     if ( snakeBoard[foodX][foodY] == 0 ) {
       safeToDropFood = true;

@@ -13,7 +13,7 @@ void snowLoop() {
 
   // Find a free pixel on the top row to drop it
   while (!foundFreePixel) {
-    int randomLocation = random(19);
+    int randomLocation = random(20);
     // Ensure there's no snow at the first or second rows already for this location
     if ( (!snowScene[randomLocation][0]) && (!snowScene[randomLocation][1]) ) {
       foundFreePixel = true;
@@ -64,6 +64,6 @@ void snowLoop() {
 
   // Randomly melt some bits
   if (random(7) == 1) {
-    snowScene[random(19)][7] = false;
+    snowScene[random(20)][7] = false;
   }
 }
