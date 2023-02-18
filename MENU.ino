@@ -64,14 +64,28 @@ void menuLoop() {
 
 
   // Use left/right to cycle through the menus
-  if (buttonLeft.wasPressed()) currentMenuItem--;
-  if (buttonRight.wasPressed()) currentMenuItem++;
+  if (buttonLeft.wasPressed()) {
+    currentMenuItem--;
+    analogWrite(PIEZO, 127);
+    delay(10);
+    analogWrite(PIEZO, 0);
+  }
+  if (buttonRight.wasPressed()) {
+    currentMenuItem++;
+    analogWrite(PIEZO, 127);
+    delay(10);
+    analogWrite(PIEZO, 0);
+  }
   if ( currentMenuItem < 0 ) currentMenuItem = 3;
   if ( currentMenuItem > 3 ) currentMenuItem = 0;
 
   // Start or A chooses that item
   if ((buttonStart.wasPressed()) || (buttonA.wasPressed())) {
     currentMode = currentMenuItem + 1;
+
+    analogWrite(PIEZO, 127);
+    delay(100);
+    analogWrite(PIEZO, 0);
 
     switch (currentMode) {
       case LIFE:

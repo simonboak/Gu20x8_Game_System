@@ -58,6 +58,9 @@ void dropFood() {
 
 void gameOver() {
   // Show the score, wait and then new game
+  analogWrite(PIEZO, 127);
+  delay(200);
+  analogWrite(PIEZO, 0);
   clearBuffer();
   displayNumber(snakeLength - 3);
   sendBufferToDisplay();
@@ -102,6 +105,12 @@ void snakeLoop() {
   snakeLoopCounter++;
   if (snakeLoopCounter == 40) {
     snakeLoopCounter = 0;
+
+    analogWrite(PIEZO, 127);
+    delay(10);
+    analogWrite(PIEZO, 0);
+
+
     if (snakeDirection == UP) {
       snakeY--;
       if (snakeY < 0) {
@@ -136,6 +145,9 @@ void snakeLoop() {
 
     if (snakeBoard[snakeX][snakeY] < 0) {
       // Found food
+      analogWrite(PIEZO, 127);
+      delay(100);
+      analogWrite(PIEZO, 0);
       snakeLength++;
       dropFood();
     }

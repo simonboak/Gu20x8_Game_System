@@ -24,6 +24,9 @@ pushButton buttonSelect(2);
 #define CLOCK 7
 #define  DATA 6
 
+// Piezo connection
+#define PIEZO 5
+
 byte bluePixelData[20];
 byte  redPixelData[20];
 
@@ -63,6 +66,9 @@ void setup() {
   pinMode(CLOCK, OUTPUT);
   pinMode(DATA, OUTPUT);
 
+  // Piezo setup
+  pinMode(PIEZO, OUTPUT);
+
   // Reset sequence
   digitalWrite(CONTROL_DATA, HIGH);
   digitalWrite(WRITE_READ, HIGH);
@@ -82,6 +88,10 @@ void setup() {
   // Set up random data for our starting game
   randomSeed(analogRead(0));
 
+  // Boop
+  analogWrite(PIEZO, 127);
+  delay(100);
+  analogWrite(PIEZO, 0);
   
   startMenu();
 }
